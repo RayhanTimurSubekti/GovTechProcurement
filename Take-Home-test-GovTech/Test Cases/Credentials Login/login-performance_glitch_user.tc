@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>login-performance_glitch_user</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>ca37a2c6-c4a2-4cf5-a324-ba2aca82f3db</testCaseGuid>
+</TestCaseEntity>

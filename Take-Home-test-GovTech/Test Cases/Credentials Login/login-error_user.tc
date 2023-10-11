@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>login-error_user</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f3eb2684-626c-4dc1-9381-1fde5f424e0c</testCaseGuid>
+</TestCaseEntity>
