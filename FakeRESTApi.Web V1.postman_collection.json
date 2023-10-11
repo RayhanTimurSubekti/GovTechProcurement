@@ -1,0 +1,4739 @@
+{
+	"info": {
+		"_postman_id": "f4f9ea5c-8d9b-4b6f-9ab0-08e120f32818",
+		"name": "FakeRESTApi.Web V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7253120"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Activities",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Get Activities",
+											"item": [
+												{
+													"name": "/api/v1/Activities/:id",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain; v=1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-200",
+													"event": [
+														{
+															"listen": "prerequest",
+															"script": {
+																"exec": [
+																	"",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														},
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"",
+																	"pm.test(\"Response status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+																	"});",
+																	"",
+																	"pm.test(\"Response body has the correct schema\", function () {",
+																	"    var response = pm.response.json();",
+																	"    ",
+																	"    pm.expect(response).to.be.an('object').that.has.all.keys('id', 'title', 'dueDate', 'completed');",
+																	"    pm.expect(response.id).to.be.a('number');",
+																	"    pm.expect(response.title).to.be.a('string');",
+																	"    pm.expect(response.dueDate).to.be.a('string');",
+																	"    pm.expect(response.completed).to.be.a('boolean');",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities/:id-200",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}api"
+																	],
+																	"path": [
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 10:01:17 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"id\": 1,\n    \"title\": \"Activity 1\",\n    \"dueDate\": \"2023-10-10T11:01:18.3360729+00:00\",\n    \"completed\": false\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-400",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"// Response Message",
+																	"var jsonData = pm.response.json();",
+																	"pm.test(\"Verify error: \"+jsonData.title, function () {",
+																	"    pm.expect(jsonData.title).is.contains(\"One or more validation errors occurred.\");",
+																	"})",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"    var schema = {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"            id: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            title: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            dueDate: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            completed: {",
+																	"                type: \"string\"",
+																	"            }",
+																	"        },",
+																	"        required: [\"id\", \"title\", \"dueDate\", \"completed\"]",
+																	"    };",
+																	"",
+																	"    var response = pm.response.json();",
+																	"    pm.expect(tv4.validate(response, schema)).to.be.false;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/:id",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": ""
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-400",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}api/v1/Activities/:id",
+																	"host": [
+																		"{{baseUrl}}api"
+																	],
+																	"path": [
+																		"v1",
+																		"Activities",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": ""
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 08:02:35 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-181f10069cd00d4cbd7fa0a1dc60dc9e-3b652a33db8d3944-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value ':id' is not valid.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-404",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"",
+																	"pm.test(\"Response status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
+																	"});",
+																	"",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+																	"});",
+																	"",
+																	"// Response Message",
+																	"var jsonData = pm.response.json();",
+																	"pm.test(\"Verify error: \"+jsonData.title, function () {",
+																	"    pm.expect(jsonData.title).is.contains(\"Not Found\");",
+																	"})",
+																	"",
+																	"pm.test(\"Response has the required fields\", function () {",
+																	"  const responseData = pm.response.json();",
+																	"  ",
+																	"  pm.expect(responseData).to.be.an('object');",
+																	"  pm.expect(responseData.type).to.exist;",
+																	"  pm.expect(responseData.title).to.exist;",
+																	"  pm.expect(responseData.status).to.exist;",
+																	"  pm.expect(responseData.traceId).to.exist;",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"  var schema = {",
+																	"    type: \"object\",",
+																	"    properties: {",
+																	"      type: { type: \"string\" },",
+																	"      title: { type: \"string\" },",
+																	"      status: { type: \"number\" },",
+																	"      traceId: { type: \"string\" }",
+																	"    },",
+																	"    required: [\"type\", \"title\", \"status\", \"traceId\"]",
+																	"  };",
+																	"",
+																	"  var response = pm.response.json();",
+																	"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/32",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"32"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-404",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}api/v1/Activities/32",
+																	"host": [
+																		"{{baseUrl}}api"
+																	],
+																	"path": [
+																		"v1",
+																		"Activities",
+																		"32"
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 08:03:32 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"traceId\": \"00-68d763843e5ba245aae2bd490dd1c45a-317c97839bed9148-00\"\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-maxid",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"    var schema = {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"            type: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            title: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            status: {",
+																	"                type: \"number\"",
+																	"            },",
+																	"            traceId: {",
+																	"                type: \"string\"",
+																	"            },",
+																	"            errors: {",
+																	"                type: \"object\",",
+																	"                properties: {",
+																	"                    id: {",
+																	"                        type: \"array\",",
+																	"                        items: {",
+																	"                            type: \"string\"",
+																	"                        }",
+																	"                    }",
+																	"                },",
+																	"                required: [\"id\"]",
+																	"            }",
+																	"        },",
+																	"        required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+																	"    };",
+																	"",
+																	"    var response = pm.response.json();",
+																	"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/100000000000000000000000000000000000000000",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"100000000000000000000000000000000000000000"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-maxid",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}api/v1/Activities/100000000000000000000000000000000000000000",
+																	"host": [
+																		"{{baseUrl}}api"
+																	],
+																	"path": [
+																		"v1",
+																		"Activities",
+																		"100000000000000000000000000000000000000000"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 08:16:27 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-65b47997da1ad4458dae54a47e71901c-734ef0f607169042-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value '100000000000000000000000000000000000000000' is not valid.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-minid",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"",
+																	"pm.test(\"Response status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
+																	"});",
+																	"",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+																	"});",
+																	"",
+																	"pm.test(\"Response has the required fields\", function () {",
+																	"  const responseData = pm.response.json();",
+																	"  ",
+																	"  pm.expect(responseData).to.be.an('object');",
+																	"  pm.expect(responseData.type).to.exist;",
+																	"  pm.expect(responseData.title).to.exist;",
+																	"  pm.expect(responseData.status).to.exist;",
+																	"  pm.expect(responseData.traceId).to.exist;",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"  var schema = {",
+																	"    type: \"object\",",
+																	"    properties: {",
+																	"      type: { type: \"string\" },",
+																	"      title: { type: \"string\" },",
+																	"      status: { type: \"number\" },",
+																	"      traceId: { type: \"string\" }",
+																	"    },",
+																	"    required: [\"type\", \"title\", \"status\", \"traceId\"]",
+																	"  };",
+																	"",
+																	"  var response = pm.response.json();",
+																	"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/0",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"0"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-minid",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}api/v1/Activities/0",
+																	"host": [
+																		"{{baseUrl}}api"
+																	],
+																	"path": [
+																		"v1",
+																		"Activities",
+																		"0"
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 09:33:05 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"traceId\": \"00-fdd9eb8194f8b84d96ad5e4ed9d60955-c2fc0e89bc8d1f4a-00\"\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Put Activities",
+											"item": [
+												{
+													"name": "/api/v1/Activities/:id",
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 1,\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/30",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"30"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain; v=1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-200",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"",
+																	"pm.test(\"Response status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"  const schema = {",
+																	"    type: \"array\",",
+																	"    items: {",
+																	"      type: \"object\",",
+																	"      properties: {",
+																	"        id: { type: \"number\" },",
+																	"        title: { type: \"string\" },",
+																	"        dueDate: { type: \"string\" },",
+																	"        completed: { type: \"boolean\" }",
+																	"      },",
+																	"      required: [\"id\", \"title\", \"dueDate\", \"completed\"]",
+																	"    }",
+																	"  };",
+																	"",
+																	"  const response = pm.response.json();",
+																	"  pm.expect(tv4.validate(response, schema)).to.be.false;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 1,\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain; v=1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/id-400",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"// Response Message",
+																	"var jsonData = pm.response.json();",
+																	"pm.test(\"Verify error: \"+jsonData.title, function () {",
+																	"    pm.expect(jsonData.title).is.contains(\"One or more validation errors occurred.\");",
+																	"})",
+																	"",
+																	"pm.test(\"Response body structure is valid\", function () {",
+																	"    var responseJSON = pm.response.json();",
+																	"",
+																	"    pm.expect(responseJSON).to.be.an('object');",
+																	"    pm.expect(responseJSON).to.have.property('type').that.is.a('string');",
+																	"    pm.expect(responseJSON).to.have.property('title').that.is.a('string');",
+																	"    pm.expect(responseJSON).to.have.property('status').that.is.a('number');",
+																	"    pm.expect(responseJSON).to.have.property('traceId').that.is.a('string');",
+																	"    pm.expect(responseJSON).to.have.property('errors').that.is.an('object');",
+																	"    pm.expect(responseJSON.errors).to.have.property('$.id').that.is.an('array');",
+																	"",
+																	"});",
+																	"",
+																	"pm.test(\"Schema is valid\", function () {",
+																	"  var schema = {",
+																	"    type: \"object\",",
+																	"    properties: {",
+																	"      type: {",
+																	"        type: \"string\"",
+																	"      },",
+																	"      title: {",
+																	"        type: \"string\"",
+																	"      },",
+																	"      status: {",
+																	"        type: \"number\"",
+																	"      },",
+																	"      traceId: {",
+																	"        type: \"string\"",
+																	"      },",
+																	"      errors: {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"          \"$.id\": {",
+																	"            type: \"array\"",
+																	"          }",
+																	"        },",
+																	"        required: [\"$.id\"]",
+																	"      }",
+																	"    },",
+																	"    required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+																	"  };",
+																	"",
+																	"  var response = pm.response.json();",
+																	"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-400",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 09:43:56 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-5a6f7c367fd65c40ac889a56437b6d60-6a6a717fe1cf4041-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 10.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-405",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"",
+																	"pm.test(\"Response status code is 200\", function () {",
+																	"    pm.expect(pm.response.code).to.equal(405);",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																""
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-405",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Method Not Allowed",
+															"code": 405,
+															"_postman_previewlanguage": "plain",
+															"header": [
+																{
+																	"key": "Content-Length",
+																	"value": "0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 09:47:41 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Allow",
+																	"value": "DELETE, GET, PUT"
+																}
+															],
+															"cookie": [],
+															"body": null
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-idEmpty",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-idEmpty",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:52:51 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-2d3132c602a7cb43959236215e02068a-f84fdd48c56da145-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 10.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-idNull",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"00\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-idNull",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"00\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:52:42 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"id\": 0,\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-idValidation",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"ABC\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-idValidation",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"ABC\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:52:34 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-dba899b95f60824385dc1c76a7b43a2f-499790930319004d-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 13.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-titleEmpty",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400 if tittle required\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-titleEmpty",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:52:21 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"id\": 1,\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-titleMax",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400 if max for title input\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-titleMax",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8; v=1.0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:54:19 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"id\": 1,\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-dateEmpty",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-dateEmpty",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:54:51 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-24af8d08892e044d954d1fa2823ff277-cd65c5193e07944e-00\",\n    \"errors\": {\n        \"$.dueDate\": [\n            \"The JSON value could not be converted to System.DateTime. Path: $.dueDate | LineNumber: 3 | BytePositionInLine: 17.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-dateValidation",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"12-10-2023\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-dateValidation",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"12-10-2023\",\n    \"completed\": false\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:55:26 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-5dc069b81d354347826700740413ff42-9b04a1d28b1dc54d-00\",\n    \"errors\": {\n        \"$.dueDate\": [\n            \"The JSON value could not be converted to System.DateTime. Path: $.dueDate | LineNumber: 3 | BytePositionInLine: 27.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities:/-completedEmpty",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": \n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities-completedEmpty",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json; v=1.0"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain; v=1.0"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": \n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:55:56 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-2bd4b3b5ee5f5641838a08dcc8fc5521-fffc6ab7b9361846-00\",\n    \"errors\": {\n        \"$.completed\": [\n            \"'}' is an invalid start of a value. Path: $.completed | LineNumber: 5 | BytePositionInLine: 0.\"\n        ]\n    }\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Del Activities",
+											"item": [
+												{
+													"name": "/api/v1/Activities/:id-200",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"pm.test(\"Response status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"10"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-400",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"// Response Message",
+																	"var jsonData = pm.response.json();",
+																	"pm.test(\"Verify error: \"+jsonData.title, function () {",
+																	"    pm.expect(jsonData.title).is.contains(\"One or more validation errors occurred.\");",
+																	"})",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"    var schema = {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"            type: { type: \"string\" },",
+																	"            title: { type: \"string\" },",
+																	"            status: { type: \"number\" },",
+																	"            traceId: { type: \"string\" },",
+																	"            errors: {",
+																	"                type: \"object\",",
+																	"                properties: {",
+																	"                    id: {",
+																	"                        type: \"array\",",
+																	"                        items: { type: \"string\" }",
+																	"                    }",
+																	"                },",
+																	"                required: [\"id\"]",
+																	"            }",
+																	"        },",
+																	"        required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+																	"    };",
+																	"",
+																	"    var response = pm.response.json();",
+																	"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/ABC",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"ABC"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities/:id-400",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/ABC",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"ABC"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 22:58:12 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-a80b41caccfc2f4bb18dbaaaa6b260a9-acea312565b14a4a-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value 'ABC' is not valid.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-maxid",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"    var schema = {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"            type: { type: \"string\" },",
+																	"            title: { type: \"string\" },",
+																	"            status: { type: \"number\" },",
+																	"            traceId: { type: \"string\" },",
+																	"            errors: {",
+																	"                type: \"object\",",
+																	"                properties: {",
+																	"                    id: {",
+																	"                        type: \"array\",",
+																	"                        items: { type: \"string\" }",
+																	"                    }",
+																	"                },",
+																	"                required: [\"id\"]",
+																	"            }",
+																	"        },",
+																	"        required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+																	"    };",
+																	"",
+																	"    var response = pm.response.json();",
+																	"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1000000000000000000000000000000000000000000",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1000000000000000000000000000000000000000000"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities/:id-maxid",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/1000000000000000000000000000000000000000000",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"1000000000000000000000000000000000000000000"
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/problem+json; charset=utf-8"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 23:00:32 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Transfer-Encoding",
+																	"value": "chunked"
+																}
+															],
+															"cookie": [],
+															"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-badf894aaef95944b723291e5297c538-1b22cb52d185c546-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value '1000000000000000000000000000000000000000000' is not valid.\"\n        ]\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-minid",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400 if have min validation\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"// Test to check if the response time is within an acceptable range",
+																	"pm.test(\"Response time is within acceptable range\", function () {",
+																	"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+																	"});",
+																	"",
+																	"pm.test(\"Response schema is valid\", function () {",
+																	"    var schema = {",
+																	"        type: \"object\",",
+																	"        properties: {",
+																	"            type: { type: \"string\" },",
+																	"            title: { type: \"string\" },",
+																	"            status: { type: \"number\" },",
+																	"            traceId: { type: \"string\" },",
+																	"            errors: {",
+																	"                type: \"object\",",
+																	"                properties: {",
+																	"                    id: {",
+																	"                        type: \"array\",",
+																	"                        items: { type: \"string\" }",
+																	"                    }",
+																	"                },",
+																	"                required: [\"id\"]",
+																	"            }",
+																	"        },",
+																	"        required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+																	"    };",
+																	"",
+																	"    var response = pm.response.json();",
+																	"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/0",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"0"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities/:id-minid",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/0",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		"0"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "plain",
+															"header": [
+																{
+																	"key": "Content-Length",
+																	"value": "0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 23:00:42 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "api-supported-versions",
+																	"value": "1.0"
+																}
+															],
+															"cookie": [],
+															"body": null
+														}
+													]
+												},
+												{
+													"name": "/api/v1/Activities/:id-405",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"// Test to check if the response has the correct content type",
+																	"pm.test(\"Response status code is 400\", function () {",
+																	"    pm.response.to.have.status(405);",
+																	"});"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																""
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "/api/v1/Activities/:id-405",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Activities/",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Activities",
+																		""
+																	]
+																}
+															},
+															"status": "Method Not Allowed",
+															"code": 405,
+															"_postman_previewlanguage": "plain",
+															"header": [
+																{
+																	"key": "Content-Length",
+																	"value": "0"
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 10 Oct 2023 23:02:30 GMT"
+																},
+																{
+																	"key": "Server",
+																	"value": "Kestrel"
+																},
+																{
+																	"key": "Allow",
+																	"value": "GET, POST"
+																}
+															],
+															"cookie": [],
+															"body": null
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get List Activities",
+									"item": [
+										{
+											"name": "/api/v1/Activities-200",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"",
+															"pm.test(\"Response status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+															"});",
+															"",
+															"pm.test(\"Response is an array with at least one element\", function () {",
+															"    const responseData = pm.response.json();",
+															"",
+															"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+															"});",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"  const schema = {",
+															"    type: \"array\",",
+															"    items: {",
+															"      type: \"object\",",
+															"      properties: {",
+															"        id: { type: \"number\" },",
+															"        title: { type: \"string\" },",
+															"        dueDate: { type: \"string\" },",
+															"        completed: { type: \"boolean\" }",
+															"      },",
+															"      required: [\"id\", \"title\", \"dueDate\", \"completed\"]",
+															"    }",
+															"  };",
+															"",
+															"  const response = pm.response.json();",
+															"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}api/v1/Activities/",
+													"host": [
+														"{{baseUrl}}api"
+													],
+													"path": [
+														"v1",
+														"Activities",
+														""
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain; v=1.0"
+														}
+													],
+													"cookie": [],
+													"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"dueDate\": \"<dateTime>\",\n    \"completed\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"dueDate\": \"<dateTime>\",\n    \"completed\": \"<boolean>\"\n  }\n]"
+												},
+												{
+													"name": "/api/v1/Activities",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																""
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 07:31:05 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Activity 1\",\n        \"dueDate\": \"2023-10-10T08:31:06.3161858+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Activity 2\",\n        \"dueDate\": \"2023-10-10T09:31:06.316188+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Activity 3\",\n        \"dueDate\": \"2023-10-10T10:31:06.3161885+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Activity 4\",\n        \"dueDate\": \"2023-10-10T11:31:06.3161888+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Activity 5\",\n        \"dueDate\": \"2023-10-10T12:31:06.3161892+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Activity 6\",\n        \"dueDate\": \"2023-10-10T13:31:06.3161899+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Activity 7\",\n        \"dueDate\": \"2023-10-10T14:31:06.3161903+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Activity 8\",\n        \"dueDate\": \"2023-10-10T15:31:06.3161906+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Activity 9\",\n        \"dueDate\": \"2023-10-10T16:31:06.316191+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Activity 10\",\n        \"dueDate\": \"2023-10-10T17:31:06.3161916+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Activity 11\",\n        \"dueDate\": \"2023-10-10T18:31:06.316192+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 12,\n        \"title\": \"Activity 12\",\n        \"dueDate\": \"2023-10-10T19:31:06.3161945+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Activity 13\",\n        \"dueDate\": \"2023-10-10T20:31:06.316195+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Activity 14\",\n        \"dueDate\": \"2023-10-10T21:31:06.3161954+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 15,\n        \"title\": \"Activity 15\",\n        \"dueDate\": \"2023-10-10T22:31:06.3161957+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 16,\n        \"title\": \"Activity 16\",\n        \"dueDate\": \"2023-10-10T23:31:06.3161961+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Activity 17\",\n        \"dueDate\": \"2023-10-11T00:31:06.3161964+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 18,\n        \"title\": \"Activity 18\",\n        \"dueDate\": \"2023-10-11T01:31:06.3161969+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Activity 19\",\n        \"dueDate\": \"2023-10-11T02:31:06.3161973+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 20,\n        \"title\": \"Activity 20\",\n        \"dueDate\": \"2023-10-11T03:31:06.3161977+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 21,\n        \"title\": \"Activity 21\",\n        \"dueDate\": \"2023-10-11T04:31:06.3161981+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 22,\n        \"title\": \"Activity 22\",\n        \"dueDate\": \"2023-10-11T05:31:06.3161984+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 23,\n        \"title\": \"Activity 23\",\n        \"dueDate\": \"2023-10-11T06:31:06.3161988+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 24,\n        \"title\": \"Activity 24\",\n        \"dueDate\": \"2023-10-11T07:31:06.3161992+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 25,\n        \"title\": \"Activity 25\",\n        \"dueDate\": \"2023-10-11T08:31:06.3161995+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 26,\n        \"title\": \"Activity 26\",\n        \"dueDate\": \"2023-10-11T09:31:06.3161999+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 27,\n        \"title\": \"Activity 27\",\n        \"dueDate\": \"2023-10-11T10:31:06.3162002+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 28,\n        \"title\": \"Activity 28\",\n        \"dueDate\": \"2023-10-11T11:31:06.3162006+00:00\",\n        \"completed\": true\n    },\n    {\n        \"id\": 29,\n        \"title\": \"Activity 29\",\n        \"dueDate\": \"2023-10-11T12:31:06.316201+00:00\",\n        \"completed\": false\n    },\n    {\n        \"id\": 30,\n        \"title\": \"Activity 30\",\n        \"dueDate\": \"2023-10-11T13:31:06.3162013+00:00\",\n        \"completed\": true\n    }\n]"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-400",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															"",
+															"// Response Message",
+															"var jsonData = pm.response.json();",
+															"pm.test(\"Verify error: \"+jsonData.errors.id, function () {",
+															"    pm.expect(jsonData.errors.id).is.contains(\"The value ':id' is not valid.\");",
+															"})",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"    var schema = {",
+															"        type: \"object\",",
+															"        properties: {",
+															"            id: {",
+															"                type: \"string\"",
+															"            },",
+															"            title: {",
+															"                type: \"string\"",
+															"            },",
+															"            dueDate: {",
+															"                type: \"string\"",
+															"            },",
+															"            completed: {",
+															"                type: \"string\"",
+															"            }",
+															"        },",
+															"        required: [\"id\", \"title\", \"dueDate\", \"completed\"]",
+															"    };",
+															"",
+															"    var response = pm.response.json();",
+															"    pm.expect(tv4.validate(response, schema)).to.be.false;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}api/v1/Activities/:id",
+													"host": [
+														"{{baseUrl}}api"
+													],
+													"path": [
+														"v1",
+														"Activities",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": ""
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-400",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/:id",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": ""
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 08:02:35 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-181f10069cd00d4cbd7fa0a1dc60dc9e-3b652a33db8d3944-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value ':id' is not valid.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-404",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"",
+															"pm.test(\"Response status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
+															"});",
+															"",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+															"});",
+															"",
+															"// Response Message",
+															"var jsonData = pm.response.json();",
+															"pm.test(\"Verify error: \"+jsonData.title, function () {",
+															"    pm.expect(jsonData.title).is.contains(\"Not Found\");",
+															"})",
+															"",
+															"pm.test(\"Response has the required fields\", function () {",
+															"  const responseData = pm.response.json();",
+															"  ",
+															"  pm.expect(responseData).to.be.an('object');",
+															"  pm.expect(responseData.type).to.exist;",
+															"  pm.expect(responseData.title).to.exist;",
+															"  pm.expect(responseData.status).to.exist;",
+															"  pm.expect(responseData.traceId).to.exist;",
+															"});",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"  var schema = {",
+															"    type: \"object\",",
+															"    properties: {",
+															"      type: { type: \"string\" },",
+															"      title: { type: \"string\" },",
+															"      status: { type: \"number\" },",
+															"      traceId: { type: \"string\" }",
+															"    },",
+															"    required: [\"type\", \"title\", \"status\", \"traceId\"]",
+															"  };",
+															"",
+															"  var response = pm.response.json();",
+															"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}api/v1/Activities/32",
+													"host": [
+														"{{baseUrl}}api"
+													],
+													"path": [
+														"v1",
+														"Activities",
+														"32"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-404",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/32",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"32"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 08:03:32 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"traceId\": \"00-68d763843e5ba245aae2bd490dd1c45a-317c97839bed9148-00\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-maxid",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"    var schema = {",
+															"        type: \"object\",",
+															"        properties: {",
+															"            type: {",
+															"                type: \"string\"",
+															"            },",
+															"            title: {",
+															"                type: \"string\"",
+															"            },",
+															"            status: {",
+															"                type: \"number\"",
+															"            },",
+															"            traceId: {",
+															"                type: \"string\"",
+															"            },",
+															"            errors: {",
+															"                type: \"object\",",
+															"                properties: {",
+															"                    id: {",
+															"                        type: \"array\",",
+															"                        items: {",
+															"                            type: \"string\"",
+															"                        }",
+															"                    }",
+															"                },",
+															"                required: [\"id\"]",
+															"            }",
+															"        },",
+															"        required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+															"    };",
+															"",
+															"    var response = pm.response.json();",
+															"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}api/v1/Activities/100000000000000000000000000000000000000000",
+													"host": [
+														"{{baseUrl}}api"
+													],
+													"path": [
+														"v1",
+														"Activities",
+														"100000000000000000000000000000000000000000"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-maxid",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/100000000000000000000000000000000000000000",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"100000000000000000000000000000000000000000"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 08:16:27 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-65b47997da1ad4458dae54a47e71901c-734ef0f607169042-00\",\n    \"errors\": {\n        \"id\": [\n            \"The value '100000000000000000000000000000000000000000' is not valid.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-minid",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"",
+															"pm.test(\"Response status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
+															"});",
+															"",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+															"});",
+															"",
+															"pm.test(\"Response has the required fields\", function () {",
+															"  const responseData = pm.response.json();",
+															"  ",
+															"  pm.expect(responseData).to.be.an('object');",
+															"  pm.expect(responseData.type).to.exist;",
+															"  pm.expect(responseData.title).to.exist;",
+															"  pm.expect(responseData.status).to.exist;",
+															"  pm.expect(responseData.traceId).to.exist;",
+															"});",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"  var schema = {",
+															"    type: \"object\",",
+															"    properties: {",
+															"      type: { type: \"string\" },",
+															"      title: { type: \"string\" },",
+															"      status: { type: \"number\" },",
+															"      traceId: { type: \"string\" }",
+															"    },",
+															"    required: [\"type\", \"title\", \"status\", \"traceId\"]",
+															"  };",
+															"",
+															"  var response = pm.response.json();",
+															"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}api/v1/Activities/0",
+													"host": [
+														"{{baseUrl}}api"
+													],
+													"path": [
+														"v1",
+														"Activities",
+														"0"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-minid",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}api/v1/Activities/0",
+															"host": [
+																"{{baseUrl}}api"
+															],
+															"path": [
+																"v1",
+																"Activities",
+																"0"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:33:05 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"traceId\": \"00-fdd9eb8194f8b84d96ad5e4ed9d60955-c2fc0e89bc8d1f4a-00\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Post Activities",
+									"item": [
+										{
+											"name": "/api/v1/Activities-200",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"",
+															"pm.test(\"Response status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000, \"Response time should be less than 1000ms\");",
+															"});",
+															"",
+															"pm.test(\"Response schema is valid\", function () {",
+															"  const schema = {",
+															"    type: \"array\",",
+															"    items: {",
+															"      type: \"object\",",
+															"      properties: {",
+															"        id: { type: \"number\" },",
+															"        title: { type: \"string\" },",
+															"        dueDate: { type: \"string\" },",
+															"        completed: { type: \"boolean\" }",
+															"      },",
+															"      required: [\"id\", \"title\", \"dueDate\", \"completed\"]",
+															"    }",
+															"  };",
+															"",
+															"  const response = pm.response.json();",
+															"  pm.expect(tv4.validate(response, schema)).to.be.false;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain; v=1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"completed\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-400",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															"",
+															"// Response Message",
+															"var jsonData = pm.response.json();",
+															"pm.test(\"Verify error: \"+jsonData.title, function () {",
+															"    pm.expect(jsonData.title).is.contains(\"One or more validation errors occurred.\");",
+															"})",
+															"",
+															"pm.test(\"Response body structure is valid\", function () {",
+															"    var responseJSON = pm.response.json();",
+															"",
+															"    pm.expect(responseJSON).to.be.an('object');",
+															"    pm.expect(responseJSON).to.have.property('type').that.is.a('string');",
+															"    pm.expect(responseJSON).to.have.property('title').that.is.a('string');",
+															"    pm.expect(responseJSON).to.have.property('status').that.is.a('number');",
+															"    pm.expect(responseJSON).to.have.property('traceId').that.is.a('string');",
+															"    pm.expect(responseJSON).to.have.property('errors').that.is.an('object');",
+															"    pm.expect(responseJSON.errors).to.have.property('$.id').that.is.an('array');",
+															"",
+															"});",
+															"",
+															"pm.test(\"Schema is valid\", function () {",
+															"  var schema = {",
+															"    type: \"object\",",
+															"    properties: {",
+															"      type: {",
+															"        type: \"string\"",
+															"      },",
+															"      title: {",
+															"        type: \"string\"",
+															"      },",
+															"      status: {",
+															"        type: \"number\"",
+															"      },",
+															"      traceId: {",
+															"        type: \"string\"",
+															"      },",
+															"      errors: {",
+															"        type: \"object\",",
+															"        properties: {",
+															"          \"$.id\": {",
+															"            type: \"array\"",
+															"          }",
+															"        },",
+															"        required: [\"$.id\"]",
+															"      }",
+															"    },",
+															"    required: [\"type\", \"title\", \"status\", \"traceId\", \"errors\"]",
+															"  };",
+															"",
+															"  var response = pm.response.json();",
+															"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-400",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:43:56 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-5a6f7c367fd65c40ac889a56437b6d60-6a6a717fe1cf4041-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 10.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-405",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"",
+															"pm.test(\"Response status code is 200\", function () {",
+															"    pm.expect(pm.response.code).to.equal(405);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities/1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities",
+														"1"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-405",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities/1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities",
+																"1"
+															]
+														}
+													},
+													"status": "Method Not Allowed",
+													"code": 405,
+													"_postman_previewlanguage": "plain",
+													"header": [
+														{
+															"key": "Content-Length",
+															"value": "0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:47:41 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Allow",
+															"value": "DELETE, GET, PUT"
+														}
+													],
+													"cookie": [],
+													"body": null
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-idEmpty",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-idEmpty",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:51:19 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-548905119061ab4c955f2cda66f871f7-c099b04595fcfb4f-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 10.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-idNull",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"00\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-idNull",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"00\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:57:11 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"id\": 0,\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-idValidation",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"ABC\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-idValidation",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"ABC\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:57:39 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-50395046299b8c4080471f45c1bf517d-d4a5870f1ff1474d-00\",\n    \"errors\": {\n        \"$.id\": [\n            \"The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 1 | BytePositionInLine: 13.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-titleEmpty",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400 if tittle required\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-titleEmpty",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:51:35 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"id\": 1,\n    \"title\": \"\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-titleMax",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400 no max for title\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-titleMax",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8; v=1.0"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:54:32 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														},
+														{
+															"key": "api-supported-versions",
+															"value": "1.0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"id\": 1,\n    \"title\": \"Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01 Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": false\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-dateEmpty",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-titleEmpty",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:52:38 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-30a6dece3a356847b6508a32058ae7de-3b3262ff9064db4b-00\",\n    \"errors\": {\n        \"$.dueDate\": [\n            \"The JSON value could not be converted to System.DateTime. Path: $.dueDate | LineNumber: 3 | BytePositionInLine: 17.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-dateValidation",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"12-10-2023\",\n    \"completed\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-dateValidation",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"12-10-2023\",\n    \"completed\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:55:08 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-f24a59724be94d47bb5e58d503570d9c-632068e775ca9a41-00\",\n    \"errors\": {\n        \"$.dueDate\": [\n            \"The JSON value could not be converted to System.DateTime. Path: $.dueDate | LineNumber: 3 | BytePositionInLine: 27.\"\n        ]\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Activities-completedEmpty",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"// Test to check if the response has the correct content type",
+															"pm.test(\"Response status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"// Test to check if the response time is within an acceptable range",
+															"pm.test(\"Response time is within acceptable range\", function () {",
+															"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json; v=1.0"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain; v=1.0"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": \n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Activities",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Activities"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "/api/v1/Activities-completedEmpty",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json; v=1.0"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain; v=1.0"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": \"1\",\n    \"title\": \"Activity 01\",\n    \"dueDate\": \"2023-10-10T08:45:05.9093089+00:00\",\n    \"completed\": \n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Activities",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Activities"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json; charset=utf-8"
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 10 Oct 2023 09:52:44 GMT"
+														},
+														{
+															"key": "Server",
+															"value": "Kestrel"
+														},
+														{
+															"key": "Transfer-Encoding",
+															"value": "chunked"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-dbc9b30d46d65846a34355b125d8dcf6-fd698b447930c840-00\",\n    \"errors\": {\n        \"$.completed\": [\n            \"'}' is an invalid start of a value. Path: $.completed | LineNumber: 5 | BytePositionInLine: 0.\"\n        ]\n    }\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
